@@ -1,5 +1,6 @@
 package codefiles;
 import java.awt.*;
+import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import javax.sound.sampled.*;
@@ -24,15 +25,23 @@ public class StartGui{
         playMusic("assets/needs/startmusic.wav"); // Replace with your music file path
 
         // Add the animated GIF as the background
-        ImageIcon gifIcon = new ImageIcon("assets/needs/coding.gif"); // Replace with your GIF path
+        ImageIcon gifIcon = loadImageIcon("assets/needs/coding.gif"); // Replace with your GIF path
         JLabel background = new JLabel(gifIcon);
         background.setBounds(0, 0, frame.getWidth(), frame.getHeight());
         background.setLayout(null); // Allows child components to be manually positioned
+        if (gifIcon.getIconWidth() <= 0 || gifIcon.getIconHeight() <= 0) {
+            background.setOpaque(true);
+            background.setBackground(Color.BLACK);
+        }
 
         // Add the PNG title image to the center, scaled to fit a smaller size
-        ImageIcon titleIcon = new ImageIcon("assets/needs/title.png"); // Replace with your PNG image path
+        ImageIcon titleIcon = loadImageIcon("assets/needs/title.png"); // Replace with your PNG image path
         int titleWidth = titleIcon.getIconWidth();
         int titleHeight = titleIcon.getIconHeight();
+        if (titleWidth <= 0 || titleHeight <= 0) {
+            titleWidth = 300;
+            titleHeight = 80;
+        }
 
         // Apply a smaller scale factor (e.g., 50% size)
         double scaleFactor = 0.5; // Adjust this value to make it smaller
@@ -81,17 +90,31 @@ public class StartGui{
     }
 
     private static JButton createButton(String iconPath, int x, int y, int width, int height, Runnable action) {
-        ImageIcon icon = new ImageIcon(iconPath);
-        Image scaledImage = icon.getImage().getScaledInstance(width, height, Image.SCALE_SMOOTH);
-        ImageIcon scaledIcon = new ImageIcon(scaledImage);
-
-        JButton button = new JButton(scaledIcon);
+        ImageIcon icon = loadImageIcon(iconPath);
+        JButton button;
+        if (icon.getIconWidth() > 0 && icon.getIconHeight() > 0) {
+            Image scaledImage = icon.getImage().getScaledInstance(width, height, Image.SCALE_SMOOTH);
+            ImageIcon scaledIcon = new ImageIcon(scaledImage);
+            button = new JButton(scaledIcon);
+        } else {
+            button = new JButton(iconPath.replace("assets/needs/", "").replace(".png", ""));
+        }
         button.setBounds(x, y, width, height);
         button.setBorderPainted(false);
         button.setContentAreaFilled(false);
         button.setFocusPainted(false);
         button.addActionListener(e -> action.run());
         return button;
+    }
+
+    private static ImageIcon loadImageIcon(String path) {
+        File file = new File(path);
+        if (file.exists()) {
+            return new ImageIcon(path);
+        }
+        System.out.println("Image file not found: " + path);
+        BufferedImage placeholder = new BufferedImage(1, 1, BufferedImage.TYPE_INT_ARGB);
+        return new ImageIcon(placeholder);
     }
     
     public static boolean musicWillLoop = false;
