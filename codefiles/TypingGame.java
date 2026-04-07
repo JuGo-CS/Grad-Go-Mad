@@ -11,12 +11,11 @@ public class TypingGame extends JPanel{
     Player playerInstance = Player.createPlayer();
     static RandWords randomWordObject;
 
-
     String wordToType;
     JLabel typingGamePromptLabel;
     JLabel typingBar;
     JTextField typingGameTextInput;
-
+    private boolean typingEnabled = true;
 
     public TypingGame(){
         TypingGame.randomWordObject = new RandwordsYear1();
@@ -27,7 +26,7 @@ public class TypingGame extends JPanel{
         typingGamePromptLabel.setText(getRandomWord());
         typingGamePromptLabel.setHorizontalAlignment(SwingConstants.CENTER); 
         typingGamePromptLabel.setVerticalAlignment(SwingConstants.CENTER); 
-        typingGamePromptLabel.setOpaque(false);  // Set to false to make the background transparent
+        typingGamePromptLabel.setOpaque(false);  
         typingGamePromptLabel.setFont(new Font("Arial", Font.BOLD, 15));
         typingGamePromptLabel.setForeground(new Color(0xA52A2A));
         typingGamePromptLabel.setBounds(50, 13, 100, 25);
@@ -35,8 +34,8 @@ public class TypingGame extends JPanel{
         
         //Text Input
         typingGameTextInput = new JTextField();
-        typingGameTextInput.setOpaque(true);  // Set to false to make the background transparent
-        typingGameTextInput.setBackground(Color.orange);//new Color(0xFFD700));
+        typingGameTextInput.setOpaque(true);  
+        typingGameTextInput.setBackground(Color.orange);
         typingGameTextInput.setForeground(new Color(0xA52A2A));
         typingGameTextInput.setPreferredSize(new Dimension(100, 25));
         typingGameTextInput.setFont(new Font("Arial", Font.ITALIC, 12));
@@ -46,30 +45,27 @@ public class TypingGame extends JPanel{
         	
             @Override
             public void keyTyped(KeyEvent e) {
-                // Optionally add typing sound here
+                if (!typingEnabled) {
+                    e.consume(); // Block typing
+                }
             }
 
             @Override
             public void keyPressed(KeyEvent e) {
-                if (e.getKeyCode() == KeyEvent.VK_ENTER) {  // Check for "Enter" key
-                    submitWord(typingGameTextInput.getText());
-                }
+                if (!typingEnabled || e.getKeyCode() != KeyEvent.VK_ENTER) return;
+                submitWord(typingGameTextInput.getText());
             }
 
             @Override
             public void keyReleased(KeyEvent e) {
-                if (e.getKeyCode() == KeyEvent.VK_ENTER) {  // Check for "Enter" key release
-                    typingGameTextInput.setText("");  // Clear text field
-                    GUI.coinBar.setText(String.valueOf(playerInstance.coinCount));
-                    GUI.acadBar.setText(String.valueOf(playerInstance.acadCount));
-                }
+                if (!typingEnabled || e.getKeyCode() != KeyEvent.VK_ENTER) return;
+                typingGameTextInput.setText("");  
+                GUI.coinBar.setText(String.valueOf(playerInstance.coinCount));
+                GUI.acadBar.setText(String.valueOf(playerInstance.acadCount));
             }
         });
 
-
         typingGameTextInput.setPreferredSize(new Dimension(93,21));
-
-
        
         //Panel Modifications
         setOpaque(false);
@@ -77,27 +73,29 @@ public class TypingGame extends JPanel{
         this.setPreferredSize(new Dimension(100,25));
         this.add(typingGamePromptLabel);
         this.add(typingGameTextInput);
+        setTypingEnabled(true);
     }
    
-    //In GUI: SubmitButton.addActionListener(e -> submitWord(textfield.getText()));
+    public void setTypingEnabled(boolean enabled) {
+        this.typingEnabled = enabled;
+        typingGameTextInput.setEnabled(enabled);
+        typingGameTextInput.setBackground(enabled ? Color.orange : Color.gray);
+        typingGamePromptLabel.setForeground(enabled ? new Color(0xA52A2A) : Color.gray);
+        if (!enabled) typingGameTextInput.setText("");
+    }
+    
     public void submitWord(String word){
-        if(wordToType.equals(word)){
-            StartGui.playSound("assets/soundeffects/coin.wav");
-            typingGamePromptLabel.setText(getRandomWord());
-            playerInstance.incrementCoins(wordToType.length());
-            playerInstance.incrementAcads(wordToType.length());
-        }
+        if(!typingEnabled || !wordToType.equals(word)) return;
+        StartGui.playSound("assets/soundeffects/coin.wav");
+        typingGamePromptLabel.setText(getRandomWord());
+        playerInstance.incrementCoins(wordToType.length());
+        playerInstance.incrementAcads(wordToType.length());
     }
 
-//di ko gid ma figure out ang pag exit sang frame bisan ma chatgpt ko, di gid siya nakakas
-//gin singleton ko na gani ang gui
-    //In GradGoMad:updateRandomWordObject(currentYearLevel); everytime the year changes
     public static void updateRandomWordObject(int currentYearLevel){
         TypingGame.randomWordObject = RandWordsFactory.createRandWords(currentYearLevel);
     }
 
-
-    //In GUI: PromptLabel.setText(getRandomWord());
     public String getRandomWord(){
         this.wordToType = randomWordObject.getRandword(random.nextInt(15));
         return wordToType;
