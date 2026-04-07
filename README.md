@@ -1,11 +1,14 @@
 # 🎓 Grad Go Mad! - A Chaotic College Simulator
 
+**Updated Feb 2025** - All bugs fixed, standalone JAR ready!
+
 A fun and engaging Java-based desktop game that simulates the wild journey of being a graduate student. Manage your sleep, food, academic goals, and coins while surviving exams, brain rot moments, and other hilarious challenges!
 
 ## 📋 Table of Contents
 - [Overview](#overview)
 - [Features](#features)
 - [Game Mechanics](#game-mechanics)
+- [🚀 How to Run](#how-to-run)
 - [Technologies Used](#technologies-used)
 - [How to Play](#how-to-play)
 - [Project Structure](#project-structure)
@@ -17,58 +20,68 @@ A fun and engaging Java-based desktop game that simulates the wild journey of be
 
 **Grad Go Mad!** is a university project created as a final project that brings humor and relatability to the graduate student experience. The game challenges players to maintain their well-being across multiple dimensions while keeping up with academic responsibilities through an engaging typing game mechanic and event-based gameplay.
 
+**Latest Fixes**:
+- ✅ Misc events properly stored and resolved
+- ✅ Sleep disables typing game when lamp ON
+- ✅ Timer crashes fixed (lamp toggle works forever)
+- ✅ Standalone JAR (assets embedded)
+
 The game progresses through different academic years, each with increasing difficulty and challenges. Will you survive the journey to graduation, or will you go mad along the way?
 
 ---
 
 ## ✨ Features
 
-- **Dynamic Player Stats System**: Monitor and manage your health in multiple dimensions:
-  - 😴 **Sleep Bar**: Stay rested or face the consequences
+- **Dynamic Player Stats System**: Monitor and manage your health:
+  - 😴 **Sleep Bar**: Stay rested (lamp fills sleep, disables typing)
   - 🍔 **Food Bar**: Feed yourself to survive
-  - 📚 **Academic Points**: Accumulate knowledge through typing
-  - 💰 **Coins**: Earn currency through successful typing challenges
+  - 📚 **Academic Points**: Accumulate via typing
+  - 💰 **Coins**: Earn through typing challenges
 
-- **Interactive Typing Game**: Test your typing speed and accuracy to earn coins and academic points
+- **Interactive Typing Game**: Type words to earn rewards (disabled when sleeping)
 
-- **Event System**: Random events that occur throughout the game:
-  - 📝 **Exams**: Test your academic preparedness
-  - 🧠 **Brain Rot**: Social media has its toll
-  - 🤒 **Sickness**: Get sick and lose stats
-  - And more!
+- **Event System**: Random events:
+  - 📝 **Exams**: Buy time extension
+  - 🧠 **Brain Rot**: Pay coins to recover
+  - 🤒 **Sickness**: Medicine costs coins
+  - Effects scale with year level
 
-- **Progressive Difficulty**: Game difficulty increases as you progress through academic years
+- **Progressive Difficulty**: Year-based word difficulty scaling
 
-- **Visual GUI**: User-friendly graphical interface with animated elements and real-time stat tracking
+- **Visual GUI**: Animated GIFs, real-time stats
 
-- **Audio**: Immersive 8-bit sound effects and background music to enhance gameplay
+- **Audio**: 8-bit sounds/music
 
 ---
 
 ## 🎯 Game Mechanics
 
-### Player Statistics
-- Each player statistic ranges from 0 to 100
-- **Game Over Condition**: If sleep or food drops to 0 or below, the game ends
-- **Win Condition**: Survive 360 seconds (6 minutes) with an Academic Bar ≥ 500 points
+Same as before - stats 0-100, game over if sleep/food ≤0, win at 360s + 500 acad points.
 
-### Typing Game
-- Players are presented with random words to type
-- Correct answers award coins and academic points
-- Words vary in difficulty based on the current academic year
-- Press **Enter** to submit your answer
+**NEW**: Lamp ON = sleep timer + typing disabled (grays out)!
 
-### Events
-Each event type has different impacts on player stats:
-- **Exam Events**: Reduce sleep more, slight food reduction
-- **Brain Rot Events**: Moderate sleep and food reduction
-- **Sickness Events**: Significant stat reduction
-- Effects scale with the player's current academic year
+---
 
-### Time & Progression
-- The game runs on a real-time timer (6-minute duration)
-- Stats gradually decrease over time
-- Players must balance maintaining basic stats while earning academic points
+## 🚀 **How to Run** (Super Easy!)
+
+### **1. Download & Play (Standalone JAR)**
+```
+# Just download GradGoMad.jar and double-click or:
+java -jar GradGoMad.jar
+```
+**No assets folder needed** - everything embedded! 🎉
+
+### **2. From Source (Developers)**
+```
+javac codefiles/*.java
+java -cp ".;codefiles" codefiles.GradGoMad
+```
+
+### **3. Build Your Own JAR**
+```
+javac codefiles/*.java
+jar cfe GradGoMad.jar codefiles.GradGoMad codefiles/*.class assets/
+```
 
 ---
 
@@ -150,6 +163,8 @@ Grad-Go-Mad/
 │   ├── statusBars/              # Status bar visuals
 │   └── bin/                     # Compiled class files
 │
+├───GradGoMad.jar
+│
 └── README.md                     # This file
 ```
 
@@ -166,7 +181,8 @@ This project was created as a collaborative effort during a Computer Science uni
 - **Mark Leonel Misola** - Core systems and gameplay logic
 
 ### Special Mentions
-This project captures the humorous (and sometimes very real) struggles of being a graduate student. It's a tribute to late nights, energy drinks, and the eternal question: "Why did I choose this path?" 😄
+This project captures the humorous (and sometimes very real) struggles of being a graduate student. It's a tribute to late nights, energy drinks, and the eternal question: "Why did I choose this path?"😄
+Miss you guys! <3
 
 ---
 
