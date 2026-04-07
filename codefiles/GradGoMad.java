@@ -108,13 +108,9 @@ public class GradGoMad{
             } else {
                 if (!isMiscellaneousIgnore) {
                     player.updateStats(whatEvent.toString(), currentYearLevel);
-
                 } else {
-                    Miscellaneous.whatEvent.delete(0, Miscellaneous.whatEvent.length());
-                    Miscellaneous.whatEvent.append("empty");
                     player.updateStats(currentYearLevel);
                 }
-                
             }
 
             player.updateStatsBar();
