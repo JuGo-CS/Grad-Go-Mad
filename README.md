@@ -64,12 +64,13 @@ Same as before - stats 0-100, game over if sleep/food ≤0, win at 360s + 500 ac
 
 ## 🚀 **How to Run** (Super Easy!)
 
-### **1. Download & Play (Standalone JAR)**
+### **1. Download & Play**
 ```
-# Just download GradGoMad.jar and double-click or:
+# Just download GradGoMad.jar and the assets folder 
+double-click to run it or:
 java -jar GradGoMad.jar
 ```
-**No assets folder needed** - everything embedded! 🎉
+Play and enjoy! 🎉
 
 ### **2. From Source (Developers)**
 ```
@@ -82,8 +83,11 @@ java -cp ".;codefiles" codefiles.GradGoMad
 javac codefiles/*.java
 jar cfe GradGoMad.jar codefiles.GradGoMad codefiles/*.class assets/
 ```
+## Take Note
+Make sure that you have downloaded the *assets* folder and it is located on the same directory as your jar files.
+Sad to say but we, the developers, currently not able to embed the assets in the jar itself to make it stand without the help of external folders.
 
----
+We, the developers, are hoping to release a jar or even an exe files that could stand alone without downloading other files.
 
 ## 💻 Technologies Used
 
