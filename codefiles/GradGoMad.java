@@ -68,8 +68,7 @@ public class GradGoMad{
         @Override
         public void run() {
             player.max100Stats(); 
-            // timerBySecond++;
-            timerBySecond += 10;
+            timerBySecond++;
 
             if(player.getSleepBar() >= 0 && player.getFoodBar() >= 0){
                 System.out.println("Sleep: " + player.getSleepBar() + " Food: " + player.getFoodBar() + " Current Year: " + currentYearLevel + " Time: " + timerBySecond);
@@ -87,7 +86,6 @@ public class GradGoMad{
                 StartGui.playSound("assets/soundeffects/level up.wav"); 
                 TypingGame.updateRandomWordObject(currentYearLevel);
             }
-            System.out.println("What event: " + whatEvent.toString());
             if(whatEvent.toString().equals("exam")){ 
                 secondCounterForExam++;
                 if (secondCounterForExam == 10){
