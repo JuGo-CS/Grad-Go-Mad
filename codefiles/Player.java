@@ -91,20 +91,20 @@ public class Player {
 
     public void updateStats (String whatEvent, int whatYear) {
         switch (whatEvent) {
-            case "brainrot":
+            case "brainrot" -> {
                 sleepBar -= (whatYear * 2);
                 foodBar -= (whatYear);
-                break;
+            }
 
-            case "exam":
+            case "exam" -> {
                 sleepBar -= (whatYear);
                 foodBar -= (whatYear);
-                break;
+            }
 
-            case "sick":
+            case "sick" -> {
                 sleepBar -= (whatYear);
                 foodBar -= (whatYear * 2);
-                break;
+            }
         }
     }
 
