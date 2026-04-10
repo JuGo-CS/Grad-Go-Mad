@@ -46,7 +46,7 @@ public class GradGoMad{
                 GUI.printingResults(false);
             }
 
-            GUI.getInstanceGUI().getFrame().dispose();
+            GUI.disposeFrame();
         }
 
         
