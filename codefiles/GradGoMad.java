@@ -45,6 +45,9 @@ public class GradGoMad{
             } else {
                 GUI.printingResults(false);
             }
+            
+            System.out.println("----------------------------------------");
+            System.out.println("Your Final Academic Points: " +  player.getAcadBar());
 
             GUI.disposeFrame();
         }
