@@ -3,6 +3,8 @@ import java.awt.*;
 import java.util.Timer;
 import java.util.TimerTask;
 import javax.swing.*;
+import java.awt.event.ComponentAdapter;
+import java.awt.event.ComponentEvent;
 
 public class GUI{
     public static GUI guiInstance = null;
@@ -37,9 +39,10 @@ public class GUI{
 
     private GUI() {
         frame = new JFrame("Grad Go Mad!");
+        frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setSize(500, 400);
-        frame.setResizable(false);
+        // frame.setSize(500, 400);
+        frame.setResizable(true);
         frame.setLayout(null);
         frame.setLocationRelativeTo(null);
         JLayeredPane layeredPane = new JLayeredPane();
@@ -51,12 +54,30 @@ public class GUI{
                 super.paintComponent(g);
                 String gifPath = "assets/needs/coding.gif";
                 ImageIcon icon = new ImageIcon(gifPath);
-                g.drawImage(icon.getImage(), 0, 0, this);
+                g.drawImage(icon.getImage(), 0, 0, getWidth(), getHeight(), this);  // SCALES TO FULLSCREEN
             }
         };
+        layeredPane.add(panel, JLayeredPane.DEFAULT_LAYER);  // ONLY ONCE!
 
-        panel.setBounds(0, 0, frame.getWidth(), frame.getHeight());
-        layeredPane.add(panel, JLayeredPane.DEFAULT_LAYER);
+        // RESIZE HANDLER - scales panel + GIF on window resize
+        frame.addComponentListener(new ComponentAdapter() {
+            @Override
+            public void componentResized(ComponentEvent e) {
+                panel.setBounds(0, 0, frame.getWidth(), frame.getHeight());
+                panel.repaint();
+            }
+        });
+
+        //     @Override
+        //     protected void paintComponent(Graphics g) {
+        //         super.paintComponent(g);
+        //         String gifPath = "assets/needs/coding.gif";
+        //         ImageIcon icon = new ImageIcon(gifPath);
+        //         g.drawImage(icon.getImage(), 0, 0, getWidth(), getHeight(), this);
+        //     }
+        // };
+
+        // panel.setBounds(0, 0, frame.getWidth(), frame.getHeight());
         
         // Centered GIF
         JLabel characterLabel = new JLabel();
