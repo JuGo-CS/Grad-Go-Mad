@@ -42,7 +42,7 @@ public class Miscellaneous {
         return activeActivity;
     }
 
-    private static final int DIFFICULTY_PERCENTAGE = 2; //(Current difficulty:9) highnumber means less difficulty (lower percentage) 6
+    private static final int DIFFICULTY_PERCENTAGE = 6; //(Current difficulty:9) highnumber means less difficulty (lower percentage) 6
     public static StringBuilder whatEvent = new StringBuilder("empty");
 
     public void getRandomEvent() {

@@ -83,9 +83,9 @@ public class GUI{
         
         // Centered GIF
         JLabel characterLabel = new JLabel();
-        ImageIcon characterIcon = new ImageIcon("assets/needs/mycharver1.gif");
+        ImageIcon characterIcon = new ImageIcon("assets/needs/mycharver1_750.gif");
         characterLabel.setIcon(characterIcon);
-        characterLabel.setBounds(125, 110, 250, 250);
+        characterLabel.setBounds(600, 130, 1000, 1000);
         characterLabel.setOpaque(false); 
         panel.add(characterLabel);
 
@@ -224,7 +224,7 @@ public class GUI{
         sickMiscButton.setVisible(false); 
         
         ImageIcon brainRotMiscImage = new ImageIcon("assets/miscphotos/miscBrainRot.png");
-        Image brainRotScaledImage = brainRotMiscImage.getImage().getScaledInstance(80, 100, Image.SCALE_SMOOTH);
+        Image brainRotScaledImage = brainRotMiscImage.getImage().getScaledInstance(80, 100 , Image.SCALE_SMOOTH);
         brainRotMiscButton.setIcon(new ImageIcon(brainRotScaledImage));
         brainRotMiscButton.setBounds(350, 195, 90, 100);
         brainRotMiscButton.setFocusPainted(false);
