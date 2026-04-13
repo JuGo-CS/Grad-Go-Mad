@@ -64,7 +64,7 @@ public class StartGui{
         int buttonGap = 20;
 
         JButton playButton = createButton("assets/needs/play.png", centerX, bottomY, buttonWidth, buttonHeight, () -> { 
-                String prompt = JOptionPane.showInputDialog(frame, "Enter your player name for the leaderboard:", "Player Name", JOptionPane.QUESTION_MESSAGE);
+                String prompt = JOptionPane.showInputDialog(frame, "(For Leaderboards) Enter your name :", "Player Name", JOptionPane.QUESTION_MESSAGE);
                 if (prompt != null && !prompt.trim().isEmpty()) {
                     playerName = prompt.trim();
                 }
