@@ -8,20 +8,20 @@ public class ButtonOne  {
         
         JFrame frame = new JFrame();
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setSize(400, 400);
+        frame.setSize(1600, 1600);
 
         JPanel Fpanel = new JPanel(new GridLayout(3, 3));
 
         Icon[] options = {
-            new ImageIcon(new ImageIcon("assets/foodsphotos/cf1.jpg").getImage().getScaledInstance(90, 90, Image.SCALE_SMOOTH)),
-            new ImageIcon(new ImageIcon("assets/foodsphotos/jf3.jpg").getImage().getScaledInstance(90, 90, Image.SCALE_SMOOTH)),
-            new ImageIcon(new ImageIcon("assets/foodsphotos/hf2.jpg").getImage().getScaledInstance(90, 90, Image.SCALE_SMOOTH)),
-            new ImageIcon(new ImageIcon("assets/foodsphotos/hf3.jpg").getImage().getScaledInstance(90, 90, Image.SCALE_SMOOTH)),
-            new ImageIcon(new ImageIcon("assets/foodsphotos/cf2.jpg").getImage().getScaledInstance(90, 90, Image.SCALE_SMOOTH)),
-            new ImageIcon(new ImageIcon("assets/foodsphotos/jf2.jpg").getImage().getScaledInstance(90, 90, Image.SCALE_SMOOTH)),
-            new ImageIcon(new ImageIcon("assets/foodsphotos/jf1.jpg").getImage().getScaledInstance(90, 90, Image.SCALE_SMOOTH)),
-            new ImageIcon(new ImageIcon("assets/foodsphotos/hf1.jpg").getImage().getScaledInstance(90, 90, Image.SCALE_SMOOTH)),
-            new ImageIcon(new ImageIcon("assets/foodsphotos/cf3.jpg").getImage().getScaledInstance(90, 90, Image.SCALE_SMOOTH))
+            new ImageIcon(new ImageIcon("assets/foodsphotos/cf1.jpg").getImage().getScaledInstance(180, 180, Image.SCALE_SMOOTH)),
+            new ImageIcon(new ImageIcon("assets/foodsphotos/jf3.jpg").getImage().getScaledInstance(180, 180, Image.SCALE_SMOOTH)),
+            new ImageIcon(new ImageIcon("assets/foodsphotos/hf2.jpg").getImage().getScaledInstance(180, 180, Image.SCALE_SMOOTH)),
+            new ImageIcon(new ImageIcon("assets/foodsphotos/hf3.jpg").getImage().getScaledInstance(180, 180, Image.SCALE_SMOOTH)),
+            new ImageIcon(new ImageIcon("assets/foodsphotos/cf2.jpg").getImage().getScaledInstance(180, 180, Image.SCALE_SMOOTH)),
+            new ImageIcon(new ImageIcon("assets/foodsphotos/jf2.jpg").getImage().getScaledInstance(180, 180, Image.SCALE_SMOOTH)),
+            new ImageIcon(new ImageIcon("assets/foodsphotos/jf1.jpg").getImage().getScaledInstance(180, 180, Image.SCALE_SMOOTH)),
+            new ImageIcon(new ImageIcon("assets/foodsphotos/hf1.jpg").getImage().getScaledInstance(180, 180, Image.SCALE_SMOOTH)),
+            new ImageIcon(new ImageIcon("assets/foodsphotos/cf3.jpg").getImage().getScaledInstance(180, 180, Image.SCALE_SMOOTH))
         };
 
         String[] foodNames = {
