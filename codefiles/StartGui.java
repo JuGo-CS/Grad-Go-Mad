@@ -6,7 +6,6 @@ import java.awt.image.BufferedImage;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -81,19 +80,6 @@ public class StartGui{
 
         JButton throphyButton = createButton("assets/needs/throphy.png", 1550, 650, buttonWidth, buttonHeight * 2, () -> { 
             is_leaderboard_opened = true;
-            try {
-                Player p = Player.createPlayer();
-                int score = p.coinCount + p.getAcadBar();
-                File csvFile = new File("codefiles/leaderboards.csv");
-                try (FileWriter fw = new FileWriter(csvFile, true)) {
-                    if (csvFile.length() == 0) {
-                        fw.write("name,score\n");
-                    }
-                    fw.write(StartGui.playerName + "," + score + "\n");
-                }
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
 
             // Show top 10 leaderboard
             try {
