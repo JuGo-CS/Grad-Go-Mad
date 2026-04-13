@@ -13,6 +13,7 @@ public class StartGui{
     private static Clip backgroundMusicClip;
     static JFrame frame = null;
     static boolean gameStarts = false;
+    public static String playerName = "";
 
     private StartGui() {
         // Create the main frame
@@ -49,98 +50,42 @@ public class StartGui{
         playMusic("assets/needs/startmusic.wav"); // Replace with your music file path
 
         ImageIcon titleIcon = loadImageIcon("assets/needs/title.png");
-    double scaleFactor = 1.5;
-    int scaledTitleWidth = (int)(titleIcon.getIconWidth() * scaleFactor);
-    int scaledTitleHeight = (int)(titleIcon.getIconHeight() * scaleFactor);
-    JLabel titleLabel = new JLabel();
-    titleLabel.setIcon(new ImageIcon(titleIcon.getImage().getScaledInstance(scaledTitleWidth, scaledTitleHeight, Image.SCALE_SMOOTH)));
-    titleLabel.setBounds((frame.getWidth() - scaledTitleWidth)/2, 170, scaledTitleWidth, scaledTitleHeight);
-    panel.add(titleLabel);
+        double scaleFactor = 1.5;
+        int scaledTitleWidth = (int)(titleIcon.getIconWidth() * scaleFactor);
+        int scaledTitleHeight = (int)(titleIcon.getIconHeight() * scaleFactor);
+        JLabel titleLabel = new JLabel();
+        titleLabel.setIcon(new ImageIcon(titleIcon.getImage().getScaledInstance(scaledTitleWidth, scaledTitleHeight, Image.SCALE_SMOOTH)));
+        titleLabel.setBounds((frame.getWidth() - scaledTitleWidth)/2, 170, scaledTitleWidth, scaledTitleHeight);
+        panel.add(titleLabel);
 
-    int buttonWidth = 130 * 3, buttonHeight = 55 * 3;
-    int centerX = (frame.getWidth() - buttonWidth)/2;
-    int bottomY = frame.getHeight() - (2 * buttonHeight + 60);
-    int buttonGap = 20;
+        int buttonWidth = 130 * 3, buttonHeight = 55 * 3;
+        int centerX = (frame.getWidth() - buttonWidth)/2;
+        int bottomY = frame.getHeight() - (2 * buttonHeight + 60);
+        int buttonGap = 20;
 
-    JButton playButton = createButton("assets/needs/play.png", centerX, bottomY, buttonWidth, buttonHeight, () -> { gameStarts = true; });
-    JButton quitButton = createButton("assets/needs/quit.png", centerX, bottomY + buttonHeight + buttonGap, buttonWidth, buttonHeight, () -> System.exit(0));
+        JButton playButton = createButton("assets/needs/play.png", centerX, bottomY, buttonWidth, buttonHeight, () -> { 
+                String prompt = JOptionPane.showInputDialog(frame, "Enter your player name for the leaderboard:", "Player Name", JOptionPane.QUESTION_MESSAGE);
+                if (prompt != null && !prompt.trim().isEmpty()) {
+                    playerName = prompt.trim();
+                }
+                gameStarts = true; 
+            });
+        JButton quitButton = createButton("assets/needs/quit.png", centerX, bottomY + buttonHeight + buttonGap, buttonWidth, buttonHeight, () -> System.exit(0));
 
-    panel.add(playButton);
-    panel.add(quitButton);
+        panel.add(playButton);
+        panel.add(quitButton);
 
-    // Resizer for title/buttons
-    frame.addComponentListener(new ComponentAdapter() {
-        @Override
-        public void componentResized(ComponentEvent e) {
-            titleLabel.setBounds((frame.getWidth() - scaledTitleWidth)/2, 20, scaledTitleWidth, scaledTitleHeight);
-            int newCenterX = (frame.getWidth() - buttonWidth)/2;
-            int newBottomY = frame.getHeight() - (2 * buttonHeight + 60);
-            playButton.setBounds(newCenterX, newBottomY, buttonWidth, buttonHeight);
-            quitButton.setBounds(newCenterX, newBottomY + buttonHeight + buttonGap, buttonWidth, buttonHeight);
-        }
-    });
-
-        // Add the animated GIF as the background
-        // ImageIcon gifIcon = loadImageIcon("assets/needs/coding.gif"); // Replace with your GIF path
-        // JLabel background = new JLabel(gifIcon);
-        // background.setBounds(0, 0, frame.getWidth(), frame.getHeight());
-        // background.setLayout(null); // Allows child components to be manually positioned
-        // if (gifIcon.getIconWidth() <= 0 || gifIcon.getIconHeight() <= 0) {
-        //     background.setOpaque(true);
-        //     background.setBackground(Color.BLACK);
-        // }
-
-        // Add the PNG title image to the center, scaled to fit a smaller size
-        // ImageIcon titleIcon = loadImageIcon("assets/needs/title.png"); // Replace with your PNG image path
-        // int titleWidth = titleIcon.getIconWidth();
-        // int titleHeight = titleIcon.getIconHeight();
-        // if (titleWidth <= 0 || titleHeight <= 0) {
-        //     titleWidth = 300;
-        //     titleHeight = 80;
-        // }
-
-        // // Apply a smaller scale factor (e.g., 50% size)
-        // double scaleFactor = 0.5; // Adjust this value to make it smaller
-        // int scaledTitleWidth = (int) (titleWidth * scaleFactor);
-        // int scaledTitleHeight = (int) (titleHeight * scaleFactor);
-
-        // // Create the title label with the scaled image
-        // JLabel titleLabel = new JLabel(titleIcon);
-        // titleLabel.setIcon(new ImageIcon(titleIcon.getImage().getScaledInstance(scaledTitleWidth, scaledTitleHeight, Image.SCALE_SMOOTH)));
-        // titleLabel.setBounds((frame.getWidth() - scaledTitleWidth) / 2, 20, scaledTitleWidth, scaledTitleHeight); // Center the title
-        // background.add(titleLabel);
-
-        // Button size adjustments
-        // int buttonWidth = 130;
-        // int buttonHeight = 55;
-        // int centerX = (frame.getWidth() - buttonWidth) / 2;
-        // int bottomY = frame.getHeight() - (2 * buttonHeight + 60);
-        // int buttonGap = 10;
-
-       
-        // JButton playButton = createButton("assets/needs/play.png", centerX, bottomY, buttonWidth, buttonHeight, () -> { StartGui.gameStarts = true; });
-        // JButton quitButton = createButton("assets/needs/quit.png", centerX, bottomY + buttonHeight + buttonGap, buttonWidth, buttonHeight, () -> System.exit(0));
-
-
-        // background.add(playButton);
-        // background.add(quitButton);
-
-        // frame.add(background);
-
-        // frame.addComponentListener(new java.awt.event.ComponentAdapter() {
-        //     @Override
-        //     public void componentResized(java.awt.event.ComponentEvent e) {
-        //         background.setSize(frame.getWidth(), frame.getHeight());
-
-        //         int newCenterX = (frame.getWidth() - buttonWidth) / 2;
-        //         int newBottomY = frame.getHeight() - (2 * buttonHeight + 60);
-        //         playButton.setBounds(newCenterX, newBottomY, buttonWidth, buttonHeight);
-        //         quitButton.setBounds(newCenterX, newBottomY + buttonHeight + buttonGap, buttonWidth, buttonHeight);
-
-        //         titleLabel.setIcon(new ImageIcon(titleIcon.getImage().getScaledInstance(scaledTitleWidth, scaledTitleHeight, Image.SCALE_SMOOTH)));
-        //         titleLabel.setBounds((frame.getWidth() - scaledTitleWidth) / 2, 20, scaledTitleWidth, scaledTitleHeight);
-        //     }
-        // });
+        // Resizer for title/buttons
+        frame.addComponentListener(new ComponentAdapter() {
+            @Override
+            public void componentResized(ComponentEvent e) {
+                titleLabel.setBounds((frame.getWidth() - scaledTitleWidth)/2, 20, scaledTitleWidth, scaledTitleHeight);
+                int newCenterX = (frame.getWidth() - buttonWidth)/2;
+                int newBottomY = frame.getHeight() - (2 * buttonHeight + 60);
+                playButton.setBounds(newCenterX, newBottomY, buttonWidth, buttonHeight);
+                quitButton.setBounds(newCenterX, newBottomY + buttonHeight + buttonGap, buttonWidth, buttonHeight);
+            }
+        });
 
         frame.setVisible(true);
     }

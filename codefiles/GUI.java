@@ -2,6 +2,15 @@ package codefiles;
 import java.awt.*;
 import java.util.Timer;
 import java.util.TimerTask;
+import java.util.List;
+import java.util.ArrayList;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+import javax.swing.BorderFactory;
+import javax.swing.JScrollPane;
 import javax.swing.*;
 import java.awt.event.ComponentAdapter;
 import java.awt.event.ComponentEvent;
@@ -342,7 +351,69 @@ public class GUI{
                 background.setLayout(null);
                 frames.add(background);
             }
-            frames.setVisible(true);
+frames.setVisible(true);
+
+        // Leaderboard logic
+        try {
+            Player p = Player.createPlayer();
+            int score = p.coinCount + p.getAcadBar();
+            File csvFile = new File("codefiles/leaderboards.csv");
+            try (FileWriter fw = new FileWriter(csvFile, true)) {
+                if (csvFile.length() == 0) {
+                    fw.write("name,score\n");
+                }
+                fw.write(StartGui.playerName + "," + score + "\n");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        // Show top 10 leaderboard
+        try {
+            List<String[]> entries = new ArrayList<>();
+            BufferedReader br = new BufferedReader(new FileReader("codefiles/leaderboards.csv"));
+            String line;
+            br.readLine(); // skip header
+            while ((line = br.readLine()) != null) {
+                String[] parts = line.split(",");
+                if (parts.length == 2) {
+                    entries.add(new String[]{parts[0], parts[1].trim()});
+                }
+            }
+            br.close();
+
+            // Sort desc by score
+            entries.sort((a, b) -> Integer.parseInt(b[1]) - Integer.parseInt(a[1]));
+
+            // Top 10
+            List<String[]> top10 = entries.subList(0, Math.min(10, entries.size()));
+
+            JFrame lbFrame = new JFrame("LEADERBOARD TOP 10");
+            lbFrame.setSize(500, 400);
+            lbFrame.setResizable(false);
+            lbFrame.setLocationRelativeTo(null);
+            lbFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+            JTextArea textArea = new JTextArea();
+            textArea.setFont(new Font("Monospaced", Font.PLAIN, 14));
+            textArea.setEditable(false);
+            textArea.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
+            StringBuilder sb = new StringBuilder();
+            sb.append("----------------------------------------\n");
+            sb.append(" LEADERBOARD TOP 10\n");
+            sb.append("----------------------------------------\n\n");
+            String[] ordinals = {"1st", "2nd", "3rd", "4th", "5th", "6th", "7th", "8th", "9th", "10th"};
+            for (int i = 0; i < top10.size(); i++) {
+                String name = top10.get(i)[0];
+                int pts = Integer.parseInt(top10.get(i)[1]);
+                sb.append(String.format("%-4s | %-10s | %4d pts\n", ordinals[i], name, pts));
+            }
+            textArea.setText(sb.toString());
+            lbFrame.add(new JScrollPane(textArea));
+            lbFrame.setVisible(true);
+        } catch (Exception e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Leaderboard error: " + e.getMessage());
+        }
     }
 
     public static void main(String[] args) {
