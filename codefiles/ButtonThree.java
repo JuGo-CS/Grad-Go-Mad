@@ -12,7 +12,7 @@ public class ButtonThree {
         JPanel Apanel = new JPanel();
 
         Icon[] options = {
-        	new ImageIcon(new ImageIcon("assets/miscphotos/miscdo1.png").getImage().getScaledInstance(180, 180, Image.SCALE_SMOOTH)),
+        	new ImageIcon(new ImageIcon("assets/miscphotos/miscdo1.png").getImage().getScaledInstance(180, 100, Image.SCALE_SMOOTH)),
             new ImageIcon(new ImageIcon("assets/miscphotos/miscdo2.png").getImage().getScaledInstance(180, 180, Image.SCALE_SMOOTH)),
             new ImageIcon(new ImageIcon("assets/miscphotos/miscdo3.png").getImage().getScaledInstance(180, 180, Image.SCALE_SMOOTH))
         };
