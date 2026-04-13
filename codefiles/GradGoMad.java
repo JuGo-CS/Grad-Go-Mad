@@ -55,7 +55,7 @@ public class GradGoMad{
         
     }
 
-    public static int timerBySecond = 0;
+    public static int timerBySecond = 355;
     public static int timerYear = 0;
     public static boolean activeEvent;
     public static boolean isMiscellaneousIgnore = false; 

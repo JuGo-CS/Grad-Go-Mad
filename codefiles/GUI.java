@@ -9,8 +9,7 @@ import java.io.FileWriter;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
-import javax.swing.BorderFactory;
-import javax.swing.JScrollPane;
+
 import javax.swing.*;
 import java.awt.event.ComponentAdapter;
 import java.awt.event.ComponentEvent;
@@ -329,29 +328,29 @@ public class GUI{
     }
 
     public static void printingResults(boolean playerResult) {
-            JFrame frames = new JFrame("Result!");
-            frames.setSize(500, 400);
-            frames.setResizable(false);
-            frames.setLocationRelativeTo(null);
-            frames.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-            frames.setLayout(null);
+        JFrame frames = new JFrame("Result!");
+        frames.setSize(500, 400);
+        frames.setResizable(false);
+        frames.setLocationRelativeTo(null);
+        frames.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frames.setLayout(null);
 
-            if (playerResult) {
-                StartGui.playMusic("assets/soundeffects/winnermusic.wav");
-                ImageIcon gifIcon = new ImageIcon("assets/needs/youwon.gif");
-                JLabel background = new JLabel(gifIcon);
-                background.setBounds(0, 0, frames.getWidth() - 15, frames.getHeight() - 25);
-                background.setLayout(null);
-                frames.add(background);
-            } else {
-                StartGui.playMusic("assets/soundeffects/lossmusic.wav");
-                ImageIcon gifIcon = new ImageIcon("assets/needs/gameover.gif");
-                JLabel background = new JLabel(gifIcon);
-                background.setBounds(0, 0, frames.getWidth(), frames.getHeight());
-                background.setLayout(null);
-                frames.add(background);
-            }
-frames.setVisible(true);
+        if (playerResult) {
+            StartGui.playMusic("assets/soundeffects/winnermusic.wav");
+            ImageIcon gifIcon = new ImageIcon("assets/needs/youwon.gif");
+            JLabel background = new JLabel(gifIcon);
+            background.setBounds(-520, 0, frames.getWidth() - 15, frames.getHeight() - 25);
+            background.setLayout(null);
+            frames.add(background);
+        } else {
+            StartGui.playMusic("assets/soundeffects/lossmusic.wav");
+            ImageIcon gifIcon = new ImageIcon("assets/needs/gameover.gif");
+            JLabel background = new JLabel(gifIcon);
+            background.setBounds(0, 0, frames.getWidth(), frames.getHeight());
+            background.setLayout(null);
+            frames.add(background);
+        }
+        frames.setVisible(true);
 
         // Leaderboard logic
         try {
@@ -391,7 +390,10 @@ frames.setVisible(true);
             JFrame lbFrame = new JFrame("LEADERBOARD TOP 10");
             lbFrame.setSize(500, 400);
             lbFrame.setResizable(false);
-            lbFrame.setLocationRelativeTo(null);
+            Point framesLoc = frames.getLocationOnScreen();
+            int rightX = framesLoc.x + frames.getWidth() + 10;  // 10px gap
+            int y = framesLoc.y;
+            lbFrame.setLocation(rightX, y);
             lbFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
             JTextArea textArea = new JTextArea();
             textArea.setFont(new Font("Monospaced", Font.PLAIN, 14));
