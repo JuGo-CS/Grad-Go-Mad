@@ -8,14 +8,14 @@ public class ButtonTwo {
     public void showAcadOptions() {
         JFrame frame = new JFrame();
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setSize(400, 400);
+        frame.setSize(1600, 1600);
 
         JPanel Apanel = new JPanel();
 
         Icon[] options = {
-            new ImageIcon(new ImageIcon("assets/acadphotos/dictionary.jpg").getImage().getScaledInstance(95, 95, Image.SCALE_SMOOTH)),
-            new ImageIcon(new ImageIcon("assets/acadphotos/housee.jpg").getImage().getScaledInstance(95, 95, Image.SCALE_SMOOTH)),
-            new ImageIcon(new ImageIcon("assets/acadphotos/tutor2.jpg").getImage().getScaledInstance(95, 95, Image.SCALE_SMOOTH))
+            new ImageIcon(new ImageIcon("assets/acadphotos/dictionary.jpg").getImage().getScaledInstance(180, 180, Image.SCALE_SMOOTH)),
+            new ImageIcon(new ImageIcon("assets/acadphotos/housee.jpg").getImage().getScaledInstance(180, 180, Image.SCALE_SMOOTH)),
+            new ImageIcon(new ImageIcon("assets/acadphotos/tutor2.jpg").getImage().getScaledInstance(180, 180, Image.SCALE_SMOOTH))
         };
 
         String[] acadNames = {"Subject 1-Book", "Subject 2-Study Hub", "Subject 3-Tutor"};
