@@ -214,9 +214,9 @@ public class GUI{
 
         // Misc buttons (sick, brainrot, exam)
         ImageIcon sickMiscImage = new ImageIcon("assets/miscphotos/miscSick.png"); 
-        Image sickMiscScaledImage = sickMiscImage.getImage().getScaledInstance(80, 100, Image.SCALE_SMOOTH);
+        Image sickMiscScaledImage = sickMiscImage.getImage().getScaledInstance(80 * SPRITE_MULTIPLIER, 100 * SPRITE_MULTIPLIER, Image.SCALE_SMOOTH);
         sickMiscButton.setIcon(new ImageIcon(sickMiscScaledImage));
-        sickMiscButton.setBounds(350, 195, 90, 100);
+        sickMiscButton.setBounds(1350, 550, 90 * SPRITE_MULTIPLIER, 100 * SPRITE_MULTIPLIER);
         sickMiscButton.setFocusPainted(false);
         sickMiscButton.setContentAreaFilled(false);
         sickMiscButton.setOpaque(false);
@@ -224,9 +224,9 @@ public class GUI{
         sickMiscButton.setVisible(false); 
         
         ImageIcon brainRotMiscImage = new ImageIcon("assets/miscphotos/miscBrainRot.png");
-        Image brainRotScaledImage = brainRotMiscImage.getImage().getScaledInstance(80, 100 , Image.SCALE_SMOOTH);
+        Image brainRotScaledImage = brainRotMiscImage.getImage().getScaledInstance(80 * SPRITE_MULTIPLIER, 100 * SPRITE_MULTIPLIER, Image.SCALE_SMOOTH);
         brainRotMiscButton.setIcon(new ImageIcon(brainRotScaledImage));
-        brainRotMiscButton.setBounds(350, 195, 90, 100);
+        brainRotMiscButton.setBounds(1350, 550, 90 * SPRITE_MULTIPLIER, 100 * SPRITE_MULTIPLIER);
         brainRotMiscButton.setFocusPainted(false);
         brainRotMiscButton.setContentAreaFilled(false);
         brainRotMiscButton.setOpaque(false);
@@ -234,9 +234,9 @@ public class GUI{
         brainRotMiscButton.setVisible(false);
         
         ImageIcon examMiscImage = new ImageIcon("assets/miscphotos/miscExam.png");
-        Image examMiscScaledImage = examMiscImage.getImage().getScaledInstance(80, 100, Image.SCALE_SMOOTH);
+        Image examMiscScaledImage = examMiscImage.getImage().getScaledInstance(80 * SPRITE_MULTIPLIER, 100 * SPRITE_MULTIPLIER * 3, Image.SCALE_SMOOTH);
         examMiscButton.setIcon(new ImageIcon(examMiscScaledImage));
-        examMiscButton.setBounds(350, 195, 90, 100);
+        examMiscButton.setBounds(1350, 550, 90 * SPRITE_MULTIPLIER, 100 * SPRITE_MULTIPLIER);
         examMiscButton.setFocusPainted(false);
         examMiscButton.setContentAreaFilled(false);
         examMiscButton.setOpaque(false);
