@@ -22,6 +22,8 @@ public class GUI{
 	public static Object panel;
     static JFrame frame = null;
 
+    static final int SPRITE_MULTIPLIER = 2;
+
     public static Timer sleepTimer = null;
     private static TimerTask sleepTask;
 
@@ -57,7 +59,7 @@ public class GUI{
                 g.drawImage(icon.getImage(), 0, 0, getWidth(), getHeight(), this);  // SCALES TO FULLSCREEN
             }
         };
-        layeredPane.add(panel, JLayeredPane.DEFAULT_LAYER);  // ONLY ONCE!
+        layeredPane.add(panel, JLayeredPane.DEFAULT_LAYER);  
 
         // RESIZE HANDLER - scales panel + GIF on window resize
         frame.addComponentListener(new ComponentAdapter() {
@@ -90,9 +92,9 @@ public class GUI{
         // Button 1
         JButton button1 = new JButton();
         ImageIcon buttonIcon1 = new ImageIcon("assets/needs/plate.png");
-        Image scaledImage1 = buttonIcon1.getImage().getScaledInstance(80, 80, Image.SCALE_SMOOTH);
+        Image scaledImage1 = buttonIcon1.getImage().getScaledInstance(100 * SPRITE_MULTIPLIER, 100 * SPRITE_MULTIPLIER, Image.SCALE_SMOOTH);
         button1.setIcon(new ImageIcon(scaledImage1));
-        button1.setBounds(0, 205, 100, 100);
+        button1.setBounds(120, 650, 100 * SPRITE_MULTIPLIER, 100 * SPRITE_MULTIPLIER);
         button1.setFocusPainted(false);
         button1.setContentAreaFilled(false);
         button1.setOpaque(false);
@@ -105,9 +107,9 @@ public class GUI{
         // Button 2
         JButton button2 = new JButton();
         ImageIcon buttonIcon2 = new ImageIcon("assets/needs/studysheesh.png");
-        Image scaledImage2 = buttonIcon2.getImage().getScaledInstance(75, 75, Image.SCALE_SMOOTH);
+        Image scaledImage2 = buttonIcon2.getImage().getScaledInstance(75 * SPRITE_MULTIPLIER, 75 * SPRITE_MULTIPLIER, Image.SCALE_SMOOTH);
         button2.setIcon(new ImageIcon(scaledImage2));
-        button2.setBounds(60, 190, 100, 100);
+        button2.setBounds(250, 550, 100 * SPRITE_MULTIPLIER, 100 * SPRITE_MULTIPLIER);
         button2.setFocusPainted(false);
         button2.setContentAreaFilled(false);
         button2.setOpaque(false);
@@ -120,9 +122,9 @@ public class GUI{
         // Button 3
         JButton button3 = new JButton(); 
         ImageIcon buttonIcon3 = new ImageIcon("assets/needs/warning.png"); 
-        Image scaledImage3 = buttonIcon3.getImage().getScaledInstance(95, 95, Image.SCALE_SMOOTH);
+        Image scaledImage3 = buttonIcon3.getImage().getScaledInstance(95 * SPRITE_MULTIPLIER + 95, 95 * SPRITE_MULTIPLIER + 95, Image.SCALE_SMOOTH);
         button3.setIcon(new ImageIcon(scaledImage3)); 
-        button3.setBounds(380, 275, 100, 100); 
+        button3.setBounds(1600, 700, 100 * SPRITE_MULTIPLIER + 95, 100 * SPRITE_MULTIPLIER + 95); 
         button3.setFocusPainted(false);
         button3.setContentAreaFilled(false); 
         button3.setOpaque(false);
@@ -141,16 +143,16 @@ public class GUI{
                 g.fillRect(0, 0, getWidth(), getHeight());
             }
         };
-        dimPanel.setBounds(0, 0, frame.getWidth(), frame.getHeight());
+        dimPanel.setBounds(0, 0, 2000, 1100);
         dimPanel.setOpaque(false);
         dimPanel.setVisible(false);
         layeredPane.add(dimPanel, JLayeredPane.PALETTE_LAYER);
 
         JButton button4 = new JButton();
         ImageIcon buttonIcon4 = new ImageIcon("assets/needs/lampara.png");
-        Image scaledImage4 = buttonIcon4.getImage().getScaledInstance(230, 195, Image.SCALE_SMOOTH);
+        Image scaledImage4 = buttonIcon4.getImage().getScaledInstance(230 * SPRITE_MULTIPLIER, 210 * SPRITE_MULTIPLIER, Image.SCALE_SMOOTH);
         button4.setIcon(new ImageIcon(scaledImage4));
-        button4.setBounds(360, 83, 100, 125);
+        button4.setBounds(1550,  275, 100 * SPRITE_MULTIPLIER, 125 * SPRITE_MULTIPLIER);
         button4.setFocusPainted(false);
         button4.setContentAreaFilled(false);
         button4.setOpaque(false);
@@ -191,9 +193,9 @@ public class GUI{
         
         // Status bars...
         ImageIcon foodBarIconButton = new ImageIcon("assets/statusBars/foodBar5.png");
-        Image foodBarScaledImage = foodBarIconButton.getImage().getScaledInstance(120, 50, Image.SCALE_SMOOTH);
+        Image foodBarScaledImage = foodBarIconButton.getImage().getScaledInstance(120 * SPRITE_MULTIPLIER + 120, 50 * SPRITE_MULTIPLIER + 50, Image.SCALE_SMOOTH);
         foodBarButton.setIcon(new ImageIcon(foodBarScaledImage));
-        foodBarButton.setBounds(5, 3, 140, 50);
+        foodBarButton.setBounds(15, 10, 140 * SPRITE_MULTIPLIER + 140, 50 * SPRITE_MULTIPLIER + 50);
         foodBarButton.setFocusPainted(false);
         foodBarButton.setContentAreaFilled(false);
         foodBarButton.setOpaque(false);
@@ -201,9 +203,9 @@ public class GUI{
         panel.add(foodBarButton);
 
         ImageIcon sleepBarIconButton = new ImageIcon("assets/statusBars/sleepBar5.png");
-        Image sleepBarScaledImage = sleepBarIconButton.getImage().getScaledInstance(120, 50, Image.SCALE_SMOOTH);
+        Image sleepBarScaledImage = sleepBarIconButton.getImage().getScaledInstance(120 * SPRITE_MULTIPLIER + 120, 50 * SPRITE_MULTIPLIER + 50, Image.SCALE_SMOOTH);
         sleepBarButton.setIcon(new ImageIcon(sleepBarScaledImage));
-        sleepBarButton.setBounds(5, 53, 140, 50);
+        sleepBarButton.setBounds(15, 175, 140 * SPRITE_MULTIPLIER + 140, 50 * SPRITE_MULTIPLIER + 50);
         sleepBarButton.setFocusPainted(false);
         sleepBarButton.setContentAreaFilled(false);
         sleepBarButton.setOpaque(false);
@@ -243,34 +245,34 @@ public class GUI{
 
         // Coin/acad bars
         ImageIcon coinPoints = new ImageIcon("assets/needs/coinbar.png");
-        Image coinImage = coinPoints.getImage().getScaledInstance(112, 112, Image.SCALE_SMOOTH);
+        Image coinImage = coinPoints.getImage().getScaledInstance(112  * SPRITE_MULTIPLIER + 112, 112 * SPRITE_MULTIPLIER + 112, Image.SCALE_SMOOTH);
         coinBar.setIcon(new ImageIcon(coinImage));
-        coinBar.setBounds(248, -26, 112, 112);
+        coinBar.setBounds(1525, -100, 112 * SPRITE_MULTIPLIER + 122, 112 * SPRITE_MULTIPLIER + 122);
         coinBar.setHorizontalTextPosition(JLabel.CENTER);
         coinBar.setVerticalTextPosition(JLabel.CENTER);
-        coinBar.setFont(new Font("Arial", Font.BOLD, 15));
+        coinBar.setFont(new Font("Arial", Font.BOLD, 35));
         coinBar.setForeground(Color.white);
 
         ImageIcon acadPoints = new ImageIcon("assets/needs/acadbar.png");
-        Image acadImage = acadPoints.getImage().getScaledInstance(112, 112, Image.SCALE_SMOOTH);
+        Image acadImage = acadPoints.getImage().getScaledInstance(112 * SPRITE_MULTIPLIER + 122, 112 * SPRITE_MULTIPLIER + 112, Image.SCALE_SMOOTH);
         acadBar.setIcon(new ImageIcon(acadImage));
-        acadBar.setBounds(358, -26, 112, 112);
+        acadBar.setBounds(1175, -100, 112 * SPRITE_MULTIPLIER + 122, 112 * SPRITE_MULTIPLIER + 122);
         acadBar.setHorizontalTextPosition(JLabel.CENTER);
         acadBar.setVerticalTextPosition(JLabel.CENTER);
-        acadBar.setFont(new Font("Arial", Font.BOLD, 15));
+        acadBar.setFont(new Font("Arial", Font.BOLD, 35));
         acadBar.setForeground(Color.white);
 
         // TypingGame
         typeGamePanel = new TypingGame();
-        typeGamePanel.setBounds(38, 115, 100, 100);
+        typeGamePanel.setBounds(200, 375, 100 * SPRITE_MULTIPLIER + 100, 100 * SPRITE_MULTIPLIER + 100);
         panel.add(typeGamePanel);
         
         // PSP
         JButton psp = new JButton();
         ImageIcon buttonIcon6 = new ImageIcon("assets/needs/typer.png");
-        Image scaledImage6 = buttonIcon6.getImage().getScaledInstance(110, 110, Image.SCALE_SMOOTH);
+        Image scaledImage6 = buttonIcon6.getImage().getScaledInstance(110 * SPRITE_MULTIPLIER + 100, 110 * SPRITE_MULTIPLIER + 100, Image.SCALE_SMOOTH);
         psp.setIcon(new ImageIcon(scaledImage6));
-        psp.setBounds(33, 70, 110, 110);
+        psp.setBounds(188, 275, 110 * SPRITE_MULTIPLIER + 100, 110 * SPRITE_MULTIPLIER+ 100);
         psp.setFocusPainted(false);
         psp.setContentAreaFilled(false);
         psp.setOpaque(false);
@@ -291,13 +293,13 @@ public class GUI{
 
     public static void changeFoodBar(String imageFileString){
         ImageIcon foodBarIconButton = new ImageIcon(imageFileString);
-        Image foodBarScaledImage = foodBarIconButton.getImage().getScaledInstance(130, 50, Image.SCALE_SMOOTH);
+        Image foodBarScaledImage = foodBarIconButton.getImage().getScaledInstance(130 * SPRITE_MULTIPLIER + 130, 50 * SPRITE_MULTIPLIER + 50, Image.SCALE_SMOOTH);
         foodBarButton.setIcon(new ImageIcon(foodBarScaledImage));
     }
 
     public static void changeSleepBar(String imageFileString){
         ImageIcon sleepBarIconButton = new ImageIcon(imageFileString);
-        Image sleepBarScaledImage = sleepBarIconButton.getImage().getScaledInstance(130, 50, Image.SCALE_SMOOTH);
+        Image sleepBarScaledImage = sleepBarIconButton.getImage().getScaledInstance(130  * SPRITE_MULTIPLIER + 130, 50  * SPRITE_MULTIPLIER + 50, Image.SCALE_SMOOTH);
         sleepBarButton.setIcon(new ImageIcon(sleepBarScaledImage));
     }
 

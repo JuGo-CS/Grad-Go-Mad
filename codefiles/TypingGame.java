@@ -22,14 +22,14 @@ public class TypingGame extends JPanel{
         
         //Prompt Label
         typingGamePromptLabel = new JLabel("INSERT WORD");
-        typingGamePromptLabel.setPreferredSize(new Dimension(100, 25));
+        typingGamePromptLabel.setPreferredSize(new Dimension(100 * 3, 25 * 3));
         typingGamePromptLabel.setText(getRandomWord());
         typingGamePromptLabel.setHorizontalAlignment(SwingConstants.CENTER); 
         typingGamePromptLabel.setVerticalAlignment(SwingConstants.CENTER); 
         typingGamePromptLabel.setOpaque(false);  
-        typingGamePromptLabel.setFont(new Font("Arial", Font.BOLD, 15));
+        typingGamePromptLabel.setFont(new Font("Press Start 2P", Font.BOLD, 30));
         typingGamePromptLabel.setForeground(new Color(0xA52A2A));
-        typingGamePromptLabel.setBounds(50, 13, 100, 25);
+        // typingGamePromptLabel.setBounds(20, -500, 100 * 3, 25 * 3);
         
         
         //Text Input
@@ -37,8 +37,8 @@ public class TypingGame extends JPanel{
         typingGameTextInput.setOpaque(true);  
         typingGameTextInput.setBackground(Color.orange);
         typingGameTextInput.setForeground(new Color(0xA52A2A));
-        typingGameTextInput.setPreferredSize(new Dimension(100, 25));
-        typingGameTextInput.setFont(new Font("Arial", Font.ITALIC, 12));
+        typingGameTextInput.setPreferredSize(new Dimension(100 * 3, 25 * 3));
+        typingGameTextInput.setFont(new Font("Press Start 2P", Font.ITALIC, 20));
         typingGameTextInput.setHorizontalAlignment(JTextField.CENTER);  
         typingGameTextInput.setBorder(BorderFactory.createEmptyBorder());
         typingGameTextInput.addKeyListener(new KeyListener() {
@@ -65,12 +65,12 @@ public class TypingGame extends JPanel{
             }
         });
 
-        typingGameTextInput.setPreferredSize(new Dimension(93,21));
+        typingGameTextInput.setPreferredSize(new Dimension(93 * 3,21 * 3));
        
         //Panel Modifications
         setOpaque(false);
         this.setLayout(new FlowLayout());
-        this.setPreferredSize(new Dimension(100,25));
+        this.setPreferredSize(new Dimension(100 * 3 ,25 * 3));
         this.add(typingGamePromptLabel);
         this.add(typingGameTextInput);
         setTypingEnabled(true);
