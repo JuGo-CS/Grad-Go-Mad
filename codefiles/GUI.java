@@ -1,18 +1,16 @@
 package codefiles;
 import java.awt.*;
-import java.util.Timer;
-import java.util.TimerTask;
-import java.util.List;
-import java.util.ArrayList;
-import java.io.File;
-import java.io.FileWriter;
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
-
-import javax.swing.*;
 import java.awt.event.ComponentAdapter;
 import java.awt.event.ComponentEvent;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Timer;
+import java.util.TimerTask;
+import javax.swing.*;
 
 public class GUI{
     public static GUI guiInstance = null;
@@ -356,7 +354,7 @@ public class GUI{
         try {
             Player p = Player.createPlayer();
             int score = p.coinCount + p.getAcadBar();
-            File csvFile = new File("codefiles/leaderboards.csv");
+            File csvFile = new File("assets/needs/leaderboards.csv");
             try (FileWriter fw = new FileWriter(csvFile, true)) {
                 if (csvFile.length() == 0) {
                     fw.write("name,score\n");

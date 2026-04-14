@@ -84,7 +84,7 @@ public class StartGui{
             // Show top 10 leaderboard
             try {
                 List<String[]> entries = new ArrayList<>();
-                BufferedReader br = new BufferedReader(new FileReader("codefiles/leaderboards.csv"));
+                BufferedReader br = new BufferedReader(new FileReader("assets/needs/leaderboards.csv"));
                 String line;
                 br.readLine(); // skip header
                 while ((line = br.readLine()) != null) {
