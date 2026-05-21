@@ -2,7 +2,9 @@
 
 **Updated Feb 2025** - All bugs fixed, standalone JAR ready!
 
-A fun and engaging Java-based desktop game that simulates the wild journey of being a graduate student. Manage your sleep, food, academic goals, and coins while surviving exams, brain rot moments, and other hilarious challenges!
+A fun and engaging Java-based desktop game that simulates the wild journey of being a graduate student. Manage your sleep, food, academic goals, and coins while surviving exams, brain rot moments, and other hilarious challenges! 
+
+What are you waiting for? Download the latest release and start surviving grad school today!
 
 ## 📋 Table of Contents
 - [Overview](#overview)
